@@ -23,12 +23,14 @@ resources:
     source:
       repository: "((readonly_private_ecr_repo_url))"
       tag: concourse-builder-latest
-  
+
   - name: upstream
     type: registry-image
     check_every: '6h'
     source:
       repository: jess/img
+      username: ((docker_hub_username))
+      password: ((docker_hub_authtoken))
 
 jobs:
   - name: self-update
